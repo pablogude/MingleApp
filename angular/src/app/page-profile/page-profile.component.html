@@ -1,0 +1,95 @@
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+  <!-- Main Content -->
+  <div id="content" class="min-vh-100">
+
+    <app-topbar></app-topbar>
+
+    <div *ngIf="formSuccess" class="alert alert-success text-center mb-5">{{ formSuccess }}</div>
+
+  <!-- Modal -->
+  <div *ngIf="isDispatchable" class="modal fade p-0" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog w-100 mx-auto" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Send Message to {{ sendMessageObj.name }}</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="" action="index.html" method="post" id="send-message">
+            <textarea name="content" placeholder="Your message..." rows="6" class="w-100" required [(ngModel)]="sendMessageObj.content"></textarea>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button (click)="changeDispatchable();" id="cancelMessage" type="button" class="btn rounded-pill" data-dismiss="modal">Cancel <i class="fas fa-times"></i></button>
+          <button (click)="sendMessage();" id="sendMessage" type="submit" class="btn rounded-pill" form="send-message" >Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div *ngIf="isEditable" class="modal fade p-0" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal-dialog w-100 mx-auto" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Change Your Profile Name</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form (submit)="formSubmit();" class="" action="index.html" method="post" id="send-message">
+            <input class="d-block-inline" style="border:none;" type="text" name="name" value="" placeholder="New name..." [(ngModel)]="credentials.name" autocomplete="off">
+            <!-- <textarea name="name" placeholder="Brief description..." rows="2" class="w-100" required></textarea> -->
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button (click)="confirmDelete();" type="button" name="button" class="btn rounded-pill" data-dismiss="modal">Delete Profile <i class="fas fa-trash-alt"></i></button>
+          <button (click)="changeEditable();" id="cancelMessage" type="button" class="btn rounded-pill" data-dismiss="modal">Cancel <i class="fas fa-times"></i></button>
+          <button id="sendMessage" type="submit" class="btn rounded-pill" form="send-message">Apply Changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container dog-profile md-6 mt-5 mt-md-0">
+    <div class="links">
+      <div class="float-right text-center mx-4">
+        <div class="">
+          <a routerLink="/feed" class="text-white link font-weight-500 display-4">
+            <i class="fas fa-grip-horizontal mt-4 links-ind"></i>
+          </a>
+        </div>
+        <!-- <hr class="w-25 my-4 bg-white"> -->
+        <div class="">
+          <a routerLink="/messages" class="text-white link font-weight-500 text-center display-4">
+            <i class="fas fa-envelope fa-fw links-ind"></i>
+          </a>
+        </div>
+        <div class="">
+          <a (click)="changeEditable();" class="text-white link font-weight-500 display-4">
+            <i *ngIf="!canSendMessage" class="fas fa-pen-square links-ind" data-toggle="modal" data-target="#staticBackdrop"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <img id="dog-img" src="./assets/images/{{ profilePicture }}.jpg" class="rounded-circle friend d-block mt-4 responsive">
+    <div class="text-center">
+      <h3 class="">{{ usersName }}</h3>
+      <div class="my-4">
+        <button (click)="changeDispatchable(); updateSendMessageObject(userid, usersName);" id="sendMessage" *ngIf="canSendMessage" class="btn rounded-pill m-1" data-toggle="modal" data-target="#staticBackdrop">Send Message</button>
+      </div>
+      <hr class="w-25 my-4 bg-white">
+    </div>
+
+  </div>
+
+  <app-footer></app-footer>
+
+</div>
+</div>

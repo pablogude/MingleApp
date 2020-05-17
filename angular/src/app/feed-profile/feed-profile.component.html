@@ -1,0 +1,10 @@
+<div class="card mt-4">
+  <div class="card-header">
+    <a routerLink="/profile/{{ user._id }}"><img class="profile-img-sm rounded-circle" src="./assets/images/{{ user.profile_img }}.jpg"></a>
+  </div>
+  <div class="card-body">
+    <div class="d-flex justify-content-between py-2">
+      <a class="link text-white" routerLink="/profile/{{ user._id }}"><h6 class="m-0 font-weight-bold text-warning">{{ user.name }}</h6></a>
+    </div>
+  </div>
+</div>

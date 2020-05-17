@@ -1,0 +1,15 @@
+nav {
+  background-color: #CFB41D;
+  margin: 10px auto 10px auto;
+  height: 80px;
+}
+
+img {
+  height: 60px;
+  width: 60px;
+  border-radius: 100% !important;
+}
+
+.btn-color {
+  background-color: #929290;
+}

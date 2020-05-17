@@ -1,0 +1,13 @@
+
+<div class="">
+
+  <app-topbar></app-topbar>
+
+  <div class="container">
+    <div class="row mb-5 pb-5">
+      <div *ngFor="let user of userList" class="col-xl-3 col-lg-6">
+        <app-feed-profile [user]="user"></app-feed-profile>
+      </div>
+    </div>
+  </div>
+</div>

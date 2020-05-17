@@ -1,0 +1,90 @@
+.friend {
+  cursor: pointer;
+  transition: transform .4s;
+}
+
+img {
+  border-radius: 50% !important;
+}
+
+#dog-img {
+  display: block;
+  margin: 20px auto 12px 0px;
+  border-radius: 50% !important;
+  border: 6px solid #5E5E5E;
+  background-size: cover;
+}
+
+.responsive {
+  width: 55%;
+}
+
+.dog-profile {
+  padding-top: 10px;
+  background-color: #cccccc;
+  border-radius: 18px;
+  opacity: .9;
+}
+
+div .links {
+  margin-top: 50px;
+  margin-right: 50px;
+}
+
+div .links-ind:hover {
+  transition: all .2s;
+  transform: scale(1.2);
+}
+
+#sendMessage {
+  background-color: #F0A500;
+  border: none;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+#sendMessage:hover {
+  background-color: #F1D53D;
+  border: none;
+  color: white;
+  text-decoration: none;
+  opacity: .7;
+}
+#sendMessage:active {
+  background-color: #CFB41D;
+  border: none;
+  color: #5E5E5E;
+  text-decoration: none;
+}
+
+#cancelMessage {
+  background-color: #EE2E2E;
+  border: none;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+#cancelMessage:hover {
+  background-color: #DF4949;
+  border: none;
+  color: white;
+  text-decoration: none;
+  opacity: .7;
+}
+
+#cancelMessage:active {
+  background-color: #C54343;
+  border: none;
+  color: #5E5E5E;
+  text-decoration: none;
+}
+
+dialog {
+  border: none;
+  text-align: center;
+  font-size: 1.2rem;
+  background-color: #5E5E5E;
+  padding: 2.6rem 6.6rem;
+  border-left: 12px solid  #F0A500;
+
+}

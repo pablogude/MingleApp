@@ -1,0 +1,17 @@
+body {
+  font-family: 'Rubik', sans-serif;
+  background-color: #B8B8B8;
+  background-image: url("https://www.transparenttextures.com/patterns/cubes.png");
+}
+
+img {
+  border-radius: 50% !important;
+}
+
+.mingle {
+  font-family: 'Pacifico', cursive;
+}
+
+.copyright {
+  font-family: 'Kalam', cursive;
+}

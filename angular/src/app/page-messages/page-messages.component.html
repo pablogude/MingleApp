@@ -1,0 +1,27 @@
+<div id="wrapper">
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <app-topbar></app-topbar>
+
+    <!-- Main Content -->
+    <div id="content">
+
+      <div class="container-fluid p-0 p-sm-4">
+
+        <h1 class="text-center text-white display-3 font-weight-bold" *ngIf="!haveMessage">No messages yet.</h1>
+
+        <div *ngIf="haveMessage" class="row mb-5 mw-100">
+          <div class="col-xl-4 col-lg-5">
+            <div class="message-list mb-5 custom-scroll pr-3">
+              <app-feed-message *ngFor="let message of messagesList" [message]="message"></app-feed-message>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-footer></app-footer>
+  </div>
+</div>

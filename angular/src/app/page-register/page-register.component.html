@@ -1,0 +1,46 @@
+
+<div class="bg-gradient-primary min-vh-100">
+  <div class="bg-2">
+    <div class="container">
+
+      <img id="dog-img" class="rounded-circle mt-4 mb-4" src="./assets/images/ms-icon-150x150.png" alt="">
+
+      <!-- All the content -->
+      <div class="text-white pt-6 pt-sm-16vh">
+
+        <h1 class="font-weight-bold text-center display-4 mb-4 mingle">Mingle</h1>
+        <p class="resp h4 w-50 mx-auto text-center font-weight-normal" style="line-height: 150%;">A social media website for your buddy.</p>
+
+        <h2 class="font-weight-normal mt-4 text-center">Register an account.</h2>
+        <!-- Appears only when an error occurs during the registering process -->
+        <div *ngIf="formError" class="alert text-center mb-5">{{ formError }}</div>
+
+        <!-- Appears only when an error occurs during the registering process -->
+        <div *ngIf="formSuccess" class="alert alert-success text-center mb-5">{{ formSuccess }}</div>
+        <form class="register-form user mt-5" (submit)="formSubmit();" >
+          <div class="form-group">
+
+            <input type="text" class="form-control form-control-user" id="exampleIntputName" placeholder="Name" name="name" [(ngModel)]="credentials.name">
+
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address" name="email" [(ngModel)]="credentials.email" >
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+              <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password" [(ngModel)]="credentials.password" >
+            </div>
+            <div class="col-sm-6">
+              <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Confirm Password" name="password_confirm" [(ngModel)]="credentials.password_confirm" >
+            </div>
+          </div>
+          <input type="submit" class="btn btn-block" value="Register an account">
+        </form>
+        <p class="resp h4 w-50 mx-auto mt-4 text-center font-weight-normal" style="line-height: 150%;">Already have an account?
+          <a routerLink="/login" class="link">Login</a>
+        </p>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
