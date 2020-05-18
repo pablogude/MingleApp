@@ -12,8 +12,8 @@
 
         <h1 class="text-center text-white display-3 font-weight-bold" *ngIf="!haveMessage">No messages yet.</h1>
 
-        <div *ngIf="haveMessage" class="row mb-5 mw-100">
-          <div class="col-xl-4 col-lg-5">
+        <div *ngIf="haveMessage" class="mw-70 ml-3 mr-3">
+          <div class="">
             <div class="message-list mb-5 custom-scroll pr-3">
               <app-feed-message *ngFor="let message of messagesList" [message]="message"></app-feed-message>
             </div>
