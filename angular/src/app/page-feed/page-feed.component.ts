@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService } from '../authentification.service';
+import { AuthenticationService } from '../authentication.service';
 import { ApiService } from '../api.service';
 import { LocalStorageService } from '../local-storage.service';
 import { Title } from '@angular/platform-browser';
@@ -14,7 +14,7 @@ export class PageFeedComponent implements OnInit {
   userList = [];
 
   constructor(
-    public authentification: AuthentificationService,
+    public authentification: AuthenticationService,
     private api: ApiService,
     private title: Title,
     private localStorage: LocalStorageService

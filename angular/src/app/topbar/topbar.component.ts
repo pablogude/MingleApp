@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService } from '../authentification.service';
+import { AuthenticationService } from '../authentication.service';
 import { LocalStorageService } from '../local-storage.service';
 import { EventEmitterService } from '../event-emitter.service';
-import { UserDataService } from '../user-data.service';
 import { ApiService } from '../api.service';
 
 
@@ -14,7 +13,7 @@ import { ApiService } from '../api.service';
 export class TopbarComponent implements OnInit {
 
   constructor(
-    public authentification: AuthentificationService,
+    public authentication: AuthenticationService,
     private localStorage: LocalStorageService,
     private events: EventEmitterService,
     private api: ApiService,

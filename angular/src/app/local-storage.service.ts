@@ -13,6 +13,7 @@ export class LocalStorageService {
     if(localStorage) {
       localStorage.setItem(key, value);
     } else {
+      // Very unlikely to happen.
       alert('Browser does not support the localStorage API');
     }
   }
@@ -37,6 +38,8 @@ export class LocalStorageService {
 
   public getParsedToken() {
     let token = this.getToken();
+    // The atob() method decodes a base-64 encoded string.
+    // A Json Web Token is formed by three differents strings separeted by dots -> we only need one of those segment of the string, that's the reason why we use the split() method in this case.
     return JSON.parse(atob(token.split(".")[1]));
   }
 

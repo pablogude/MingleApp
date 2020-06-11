@@ -22,6 +22,8 @@ export class PageRegisterComponent implements OnInit {
       this.title.setTitle("Mingle App - Register");
    }
 
+  // Managing error e success messages
+
   public formError = "";
   public formSuccess = "";
 
@@ -44,23 +46,28 @@ export class PageRegisterComponent implements OnInit {
       return this.formError = "All fields are required";
     }
 
+    // RegExp to know if the email address provided is valid or not
+
     var re = new RegExp(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/);
 
     if (!re.test(this.credentials.email)) {
       return this.formError = "Please enter a valid email address.";
     }
 
+    // Control password length -> 8 characters minimum
+
     if(this.credentials.password.length < 8) {
-      return this.formError = "Password should be at least 8 characters long."; 
+      return this.formError = "Password should be at least 8 characters long.";
     }
 
     if(this.credentials.password !== this.credentials.password_confirm) {
       return this.formError = "Passwords don't match";
     }
 
-    console.log("Credentials", this.credentials);
     this.register();
   }
+
+  // Send a request to the Server
 
   private register() {
     let requestObject = {
@@ -70,6 +77,7 @@ export class PageRegisterComponent implements OnInit {
     }
 
     this.api.makeRequest(requestObject).then((val) => {
+      console.log("Register request", val);
       if(val.token) {                          this.localStorage.setToken(val.token);
         this.router.navigate(['/']);
         return;

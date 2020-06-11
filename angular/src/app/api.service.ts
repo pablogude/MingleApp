@@ -4,6 +4,9 @@ import { LocalStorageService } from './local-storage.service';
 import { EventEmitterService } from './event-emitter.service';
 import { environment } from '../environments/environment';
 
+// HttpClient -> Performs HTTP requests.
+// HttpHeaders -> Represents the header configuration options for an HTTP request.
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,12 +18,14 @@ export class ApiService {
     private event:EventEmitterService
   ) { }
 
+  // 2 possible URL -> 'http://localhost:3000' || 'https://immense-plains-08996.herokuapp.com'
   private baseUrl = environment.baseUrl;
 
   private succesHandler(value) { return value; }
   private errorHandler(error) { return error; }
 
   public makeRequest(requestObject): any {
+    // make sure to make it lower case
     let type = requestObject.type.toLowerCase();
     if(!type) { return console.log("No type specified in the request object.") }
 
@@ -33,13 +38,17 @@ export class ApiService {
 
     let httpOptions = {};
 
+    // Request not available if you're not logged in
     if(requestObject.authorize) {
       httpOptions = {
         headers: new HttpHeaders({
+          // Uses environment variable secret string
           'Authorization': `Bearer ${this.localStrorage.getToken()}`
         })
       }
     }
+
+    // Different types of requests
 
     if(type === "get") {
       return this.http.get(url, httpOptions).toPromise()

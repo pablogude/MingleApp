@@ -99,19 +99,6 @@ export class PageProfileComponent implements OnInit {
     this.deleteUser();
   }
 
-  public showModal() {
-    let modal = document.getElementById("myModal");
-    // modal.showModal();
-    // $("#myModal").modal()
-
-  }
-
-  public closeModal() {
-    let modal = document.getElementById("myModal");
-    // modal.close();
-    // $("#myModal").close();
-
-  }
 
   public formSubmit() {
 
@@ -181,7 +168,7 @@ export class PageProfileComponent implements OnInit {
 
 
     if(!this.sendMessageObj.content) {
-      this.event.onAlertEvent.emit("Message not sent. You mus provide some content");
+      this.event.onAlertEvent.emit("Message not sent. You must provide some content");
       return;
     }
 
