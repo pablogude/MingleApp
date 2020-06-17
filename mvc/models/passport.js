@@ -9,7 +9,7 @@ const strategy = new localStrategy({usernameField: "email"}, (username, password
     if(err) { return done(err); }
     if(!user) {
       return done(null, false, {
-        message: "Incorrect Email."
+        message: "The email address provided is NOT in our database. "
       });
     }
 

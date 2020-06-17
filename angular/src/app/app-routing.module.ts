@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthenticationService } from './authentication.service';
+import { AuthenticationService } from './services/authentication.service';
 
 import { PageRegisterComponent } from './page-register/page-register.component';
 import { PageLoginComponent } from './page-login/page-login.component';

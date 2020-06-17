@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
-import { ApiService } from '../api.service';
-import { LocalStorageService } from '../local-storage.service';
+import { ApiService } from '../services/api.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-feed-message',
@@ -36,14 +36,12 @@ export class FeedMessageComponent implements OnInit, OnChanges {
 
 
     this.api.makeRequest(requestObject).then((val) => {
+      if(val.message) {
+          this.formSuccess = val.message;
+      }
 
     });
 
-    this.formSuccess = "Message Succesfully deleted."
-
-    setInterval(function(){
-      location.reload();
-    }, 500);
   }
 
   public formSuccess: string = ""

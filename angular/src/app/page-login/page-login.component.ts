@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
-import { LocalStorageService } from '../local-storage.service';
+import { ApiService } from '../services/api.service';
+import { LocalStorageService } from '../services/local-storage.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 

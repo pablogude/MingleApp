@@ -2,9 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
-import { LocalStorageService} from '../local-storage.service';
-import { ApiService } from '../api.service';
-import { EventEmitterService } from '../event-emitter.service';
+import { LocalStorageService } from '../services/local-storage.service';
+import { ApiService } from '../services/api.service';
+import { EventEmitterService } from '../services/event-emitter.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 import * as $ from 'jquery';
 
@@ -23,6 +24,7 @@ export class PageProfileComponent implements OnInit {
     private api: ApiService,
     private route: ActivatedRoute,
     private event: EventEmitterService,
+    private auth: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +32,7 @@ export class PageProfileComponent implements OnInit {
     this.title.setTitle("Profile");
     this.userid = this.localStorage.getParsedToken()._id;
     this.usersName = this.localStorage.getParsedToken().name;
-
+    // An observable object
     this.route.params.subscribe((params) => {
       if(this.userid === this.route.snapshot.params.userid) {
         console.log("Your profile");
@@ -84,13 +86,7 @@ export class PageProfileComponent implements OnInit {
       if(val.message) { this.formSuccess = val.message }
     });
 
-
-    this.localStorage.removeToken();
-
-
-    setInterval(function(){
-      location.reload();
-    }, 500);
+    this.auth.logout();
 
   }
 
@@ -99,9 +95,7 @@ export class PageProfileComponent implements OnInit {
     this.deleteUser();
   }
 
-
   public formSubmit() {
-
     if(
       !this.credentials.name
     ) {

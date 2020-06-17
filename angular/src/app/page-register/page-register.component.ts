@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
-import { LocalStorageService } from '../local-storage.service';
+import { ApiService } from '../services/api.service';
+import { LocalStorageService } from '../services/local-storage.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -22,7 +22,7 @@ export class PageRegisterComponent implements OnInit {
       this.title.setTitle("Mingle App - Register");
    }
 
-  // Managing error e success messages
+  // Managing error & success messages
 
   public formError = "";
   public formSuccess = "";
@@ -57,7 +57,7 @@ export class PageRegisterComponent implements OnInit {
     // Control password length -> 8 characters minimum
 
     if(this.credentials.password.length < 8) {
-      return this.formError = "Password should be at least 8 characters long.";
+      return this.formError = "Password should be at least 8 character long.";
     }
 
     if(this.credentials.password !== this.credentials.password_confirm) {
@@ -77,8 +77,8 @@ export class PageRegisterComponent implements OnInit {
     }
 
     this.api.makeRequest(requestObject).then((val) => {
-      console.log("Register request", val);
       if(val.token) {                          this.localStorage.setToken(val.token);
+        // Navigate to Feed
         this.router.navigate(['/']);
         return;
       }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders } from '@angular/common/http';
 import { LocalStorageService } from './local-storage.service';
 import { EventEmitterService } from './event-emitter.service';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 // HttpClient -> Performs HTTP requests.
 // HttpHeaders -> Represents the header configuration options for an HTTP request.
@@ -28,7 +28,7 @@ export class ApiService {
     // make sure to make it lower case
     let type = requestObject.type.toLowerCase();
     if(!type) { return console.log("No type specified in the request object.") }
-
+    // In case the request has no body -> provides an empty one
     let body = requestObject.body || {};
     let location = requestObject.location;
 
@@ -42,7 +42,7 @@ export class ApiService {
     if(requestObject.authorize) {
       httpOptions = {
         headers: new HttpHeaders({
-          // Uses environment variable secret string
+          // Uses token to authorize request
           'Authorization': `Bearer ${this.localStrorage.getToken()}`
         })
       }
@@ -67,8 +67,6 @@ export class ApiService {
       .then(this.succesHandler)
       .catch(this.errorHandler);
     }
-
-    console.log("Could not make the request. Make sure a type of GET or POST is supplied. ")
 
   }
 

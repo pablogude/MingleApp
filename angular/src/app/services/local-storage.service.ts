@@ -7,7 +7,7 @@ export class LocalStorageService {
 
   constructor() { }
 
-  tokenName = "--token-ASM-PROD";
+  tokenName = "--token-MingleApp";
 
   private set(key, value) {
     if(localStorage) {

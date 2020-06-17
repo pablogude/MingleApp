@@ -15,7 +15,7 @@ const registerUser = function({body},res) {
   }
 
   if(body.password !== body.password_confirm) {
-    return res.send({message: "Passwords don't match."})
+    return res.send({message: "Two different passwords provided."})
   }
 
   const user = new User();
@@ -30,7 +30,7 @@ const registerUser = function({body},res) {
       if(err.errmsg && err.errmsg.includes("duplicate key error")) {
         return res.json({message: "The provided email is already registered."})
       }
-      return res.json({ message: "Something went wrong."})
+      return res.json({ message: "Something went wrong. Try it again."})
     } else {
       const token = user.getJwt();
       res.status(201).json({message:"User registered"});
@@ -73,13 +73,6 @@ const getUserData = function({params}, res) {
     if(!user) { return res.json(404, { message: "User does not exist." }); }
 
     res.status(200).json({ user: user });
-  });
-}
-
-const deleteAllUsers = function(req, res) {
-  User.deleteMany({}, (err, info) => {
-    if(err) { return res.send({ error: err }); }
-    return res.json({ message: "Deleted All Users", info: info });
   });
 }
 
@@ -180,8 +173,6 @@ const sendMessage = function({ body, params },res) {
         resolve();
       });
     });
-
-
   });
 
   sendMessagePromise.then(() => {
@@ -249,8 +240,17 @@ const deleteMessage = function({params}, res) {
       if(err) { return res.statusJson(400, { err: err }); }
       result.messages.id(params.messageid).remove();
       result.save();
-      console.log("Message succesfully removed.");
+      res.status(201).json({message:"Message succesfully removed."});
     });
+  });
+}
+
+// Used only in development
+
+const deleteAllUsers = function(req, res) {
+  User.deleteMany({}, (err, info) => {
+    if(err) { return res.send({ error: err }); }
+    return res.json({ message: "Deleted All Users", info: info });
   });
 }
 

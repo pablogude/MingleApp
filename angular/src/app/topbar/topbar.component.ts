@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../authentication.service';
-import { LocalStorageService } from '../local-storage.service';
-import { EventEmitterService } from '../event-emitter.service';
-import { ApiService } from '../api.service';
+import { AuthenticationService } from '../services/authentication.service';
+import { LocalStorageService } from '../services/local-storage.service';
+import { EventEmitterService } from '../services/event-emitter.service';
+import { ApiService } from '../services/api.service';
 
 
 @Component({
